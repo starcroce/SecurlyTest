@@ -1,0 +1,21 @@
+{
+    "name": "SecurlyTest",
+    "short_name": "SecTest",
+
+    "version": "0.1",
+    "description": "Test Securly Service",
+    "permissions": ["tabs"],
+
+    "background": {
+        "scripts": ["main.js"],
+        "persistent": false
+    },
+    
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },  
+
+    "manifest_version": 2
+}

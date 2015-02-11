@@ -1,5 +1,5 @@
 function openSelectedSites() {
-    var selectedSites = document.getElementsByName("site");
+    var selectedSites = document.getElementsByTagName("input");
     for (var i = 0; i < selectedSites.length; i++) {
         if (selectedSites[i].checked) {
             chrome.tabs.create({url: selectedSites[i].value});
@@ -19,14 +19,26 @@ function closeAllTabs() {
     });
 }
 
-function actionSites(selected) {
-    var selectedSites = document.getElementsByName("site");
-    for (var i = 0; i < selectedSites.length; i++) {
-        selectedSites[i].checked = selected;
+function actionSites(selected, type) {
+    var selectedSites, i;
+    if (type == "all") {
+        selectedSites = document.getElementsByTagName("input");
+        for (i = 0; i < selectedSites.length; i++) {
+            selectedSites[i].checked = selected;
+        }
+    } else if (type == "porn") {
+        selectedSites = document.getElementsByName("sexual");
+        for (i = 0; i < selectedSites.length; i++) {
+            selectedSites[i].checked = selected;
+        }
     }
 }
  
-document.getElementById('selectAll').addEventListener('click', function() {actionSites(true);});
-document.getElementById('clearAll').addEventListener('click', function() {actionSites(false);});
+document.getElementById('selectAll').addEventListener('click', function() {actionSites(true, "all");});
+document.getElementById('clearAll').addEventListener('click', function() {actionSites(false, 'all');});
+
+document.getElementById('selectSex').addEventListener('click', function() {actionSites(true, "porn");});
+document.getElementById('clearSex').addEventListener('click', function() {actionSites(false, "porn");});
+
 document.getElementById('closeAll').addEventListener('click', closeAllTabs);
 document.getElementById('open').addEventListener('click', openSelectedSites);

@@ -31,6 +31,11 @@ function actionSites(selected, type) {
         for (i = 0; i < selectedSites.length; i++) {
             selectedSites[i].checked = selected;
         }
+    } else if (type == "search") {
+        selectedSites = document.getElementsByName("search");
+        for (i = 0; i < selectedSites.length; i++) {
+            selectedSites[i].checked = selected;
+        }
     }
 }
  
@@ -39,6 +44,9 @@ document.getElementById('clearAll').addEventListener('click', function() {action
 
 document.getElementById('selectSex').addEventListener('click', function() {actionSites(true, "porn");});
 document.getElementById('clearSex').addEventListener('click', function() {actionSites(false, "porn");});
+
+document.getElementById('selectSearch').addEventListener('click', function() {actionSites(true, "search");});
+document.getElementById('clearSearch').addEventListener('click', function() {actionSites(false, "search");});
 
 document.getElementById('closeAll').addEventListener('click', closeAllTabs);
 document.getElementById('open').addEventListener('click', openSelectedSites);
